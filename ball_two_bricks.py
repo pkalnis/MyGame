@@ -7,7 +7,7 @@ from random import randint
 WIDTH, HEIGHT = 800, 600
 BSIZE = 50
 FPS = 30
-PATH = "/Users/kalnisp/Dropbox (KAUST)/_TEACHING/MIT 60001 - Intro to Python/Projects/MyGame/"
+PATH = "/Users/kalnisp/Dropbox (KAUST)/_TEACHING/MIT 60001 - Intro to Python/Projects/MyGame/assets/"
 
 #--------------------------------------------------------------- Ball class START
 class Ball(pygame.sprite.Sprite):
