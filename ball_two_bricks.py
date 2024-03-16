@@ -23,15 +23,15 @@ class Ball(pygame.sprite.Sprite):
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
-    def move(self, dx = 0, dy = 0):
-        if (self.rect.x + dx)>=0 and (self.rect.right + dx)<WIDTH:
+    def move(self, dx=0, dy=0):
+        if (self.rect.x + dx) >= 0 and (self.rect.right + dx) < WIDTH:
             self.rect.x += dx
         else:
             self.velocity.x *= -1
             pygame.mixer.Sound.play(clickSound)
             score.update(-1)
 
-        if (self.rect.y + dy)>=0 and (self.rect.bottom + dy)<HEIGHT:
+        if (self.rect.y + dy) >= 0 and (self.rect.bottom + dy) < HEIGHT:
             self.rect.y += dy
         else:
             self.velocity.y *= -1
@@ -56,11 +56,11 @@ class Brick(pygame.sprite.Sprite):
 
 #--------------------------------------------------------------- Score class START
 class ScoreClass:
-    def __init__(self, startScore = 0):
+    def __init__(self, startScore=0):
         self.score = startScore
-        self.brickHit = {"green":0, "red":0}
+        self.brickHit = {"green": 0, "red": 0}
 
-    def update(self, dScore, item = None):
+    def update(self, dScore, item=None):
         self.score += dScore
         if item:
             self.brickHit[item.color] += 1
@@ -91,7 +91,7 @@ class ScoreClass:
 
 
 pygame.init()   # initialize the GAME object in memory
-screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.DOUBLEBUF) # Set up the game window
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.DOUBLEBUF)  # Set up the game window
 pygame.display.set_caption('Zombie shooter')
 clock = pygame.time.Clock()
 
@@ -103,8 +103,8 @@ laserSound = pygame.mixer.Sound(PATH + 'laser.wav')
 myBall = Ball("yellow")    # spawn a ball sprite
 
 bricks = pygame.sprite.Group()
-bricks.add(Brick("red", 100,100)) # spawn a red brick sprite and add it to the bricks group
-bricks.add(Brick("green", 300,100)) # spawn a green brick sprite and add it to the bricks group
+bricks.add(Brick("red", 100,100))  # spawn a red brick sprite and add it to the bricks group
+bricks.add(Brick("green", 300,100))  # spawn a green brick sprite and add it to the bricks group
 
 
 
@@ -116,7 +116,7 @@ while running:
         if event.type == pygame.QUIT:       # window close
             running = False
         if event.type == pygame.KEYDOWN:    # some key is pressed
-            if event.key == pygame.K_RIGHT: # right arrow is pressed
+            if event.key == pygame.K_RIGHT:  # right arrow is pressed
                 myBall.move(dx=+10)
             elif event.key == pygame.K_LEFT:  # left arrow is pressed
                 myBall.move(dx=-10)
