@@ -1,8 +1,5 @@
 # sounds from: https://soundbible.com
-
 import pygame
-
-
 
 #--------------------------------------------------------------- Player class START
 class Player(pygame.sprite.Sprite):
@@ -10,7 +7,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.game = game
         self.costumes = self.load_costumes(PATH + 'alien2.png')
-        self.image = self.costumes['down']
+        self.image = self.costumes['left']
         self.rect = self.image.get_rect()
         self.pos = self.image.get_rect()
         self.pos.center = (self.game.world.width // 2, self.game.world.height // 2)
@@ -48,14 +45,10 @@ class Player(pygame.sprite.Sprite):
             self.pos.y += dy
 
         return self.pos
-
 #--------------------------------------------------------------- Player class END
 
-
-
-
 #--------------------------------------------------------------- Game class START
-class Game():
+class Game:
     def __init__(self, width, height, fps, caption):
         pygame.init()   # initialize the GAME object in memory
         self.width, self.height = width, height
@@ -67,7 +60,7 @@ class Game():
         self.rect = self.image.get_rect()
         self.world = self.image.get_rect()     # size of the virtual world
 
-        self.movement={'up':False, 'down':False, 'left':False, 'right':False}
+        self.movement = {'up': False, 'down': False, 'left': False, 'right': False}
 
         self.player = Player(self)
 
@@ -128,16 +121,12 @@ class Game():
             self.clock.tick(FPS)
 
         pygame.quit()  # remove the GAME object from memory
-
 #--------------------------------------------------------------- Game class END
-
-
 
 
 #######################################################################################################
 #                                   MAIN program starts here                                          #
 #######################################################################################################
-
 # Define constants
 WIDTH, HEIGHT, FPS = 800, 600, 30
 PATH = "/Users/kalnisp/Dropbox (KAUST)/_TEACHING/MIT 60001 - Intro to Python/Projects/MyGame/assets/"
